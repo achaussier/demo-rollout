@@ -11,6 +11,15 @@ spec:
   selector:
     matchLabels:
       app: colorapi
+  strategy:
+      canary:
+        steps:
+        - setWeight: 20
+        - pause:
+            duration: "30s"
+        - setWeight: 50
+        - pause:
+            duration: "30s"
   template:
     metadata:
       labels:
